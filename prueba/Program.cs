@@ -16,7 +16,13 @@ Console.WriteLine("123");
 Console.WriteLine(123);
 Console.WriteLine("true");
 Console.WriteLine(true);
-string ejemplo_string = "hola";
-char ejemplo_char = 'a';
-int ejemplo_int = 7;
+string firstName = "Bob";
+Console.WriteLine(firstName);
+var message = 1.6;
+Console.WriteLine(message);
 
+string nombre = "Bob";
+int numeroMensajes = 3;
+decimal grados = 34.4m;
+Console.WriteLine("Hello, " + nombre + "! You have " + numeroMensajes + " messages in your inbox. The temperature is " + grados + " celsius.");
+Console.WriteLine(string.Format("Hello, {0}! You have {1:d%} messages in your inbox. The temperature is {2} celsius.", nombre, numeroMensajes,grados));
