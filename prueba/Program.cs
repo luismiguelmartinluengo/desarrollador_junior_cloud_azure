@@ -16,13 +16,35 @@ Console.WriteLine("123");
 Console.WriteLine(123);
 Console.WriteLine("true");
 Console.WriteLine(true);
-string firstName = "Bob";
-Console.WriteLine(firstName);
-var message = 1.6;
-Console.WriteLine(message);
+string firstName = "Luismi";
 
 string nombre = "Bob";
 int numeroMensajes = 3;
 decimal grados = 34.4m;
 Console.WriteLine("Hello, " + nombre + "! You have " + numeroMensajes + " messages in your inbox. The temperature is " + grados + " celsius.");
 Console.WriteLine(string.Format("Hello, {0}! You have {1:d%} messages in your inbox. The temperature is {2} celsius.", nombre, numeroMensajes,grados));
+
+Console.WriteLine("Hello \"World\"");
+
+Console.OutputEncoding = System.Text.Encoding.UTF8;
+// Kon'nichiwa World
+Console.WriteLine("\u3053\u3093\u306B\u3061\u306F World!");
+
+// To generate Japanese invoices:
+// Nihon no seikyū-sho o seisei suru ni wa:
+Console.Write("\n\n\u65e5\u672c\u306e\u8acb\u6c42\u66f8\u3092\u751f\u6210\u3059\u308b\u306b\u306f\uff1a\n\t");
+// User command to run an application
+Console.WriteLine(@"c:\invoices\app.exe -j");
+string greeting = "Hola";
+Console.WriteLine("\n-------------------Probando interpolacion----------------------------");
+string message = $"{greeting} {firstName}!";
+Console.WriteLine(message);
+
+int version = 12;
+string updateText = "Update to Windows";
+message = $"{updateText} {version}";
+Console.WriteLine(message);
+
+Console.WriteLine("\n-------------------Probando interpolacion junto con string literal----------------------------");
+string projectName = "First-Project";
+Console.WriteLine($@"C:\Output\{projectName}\Data");
