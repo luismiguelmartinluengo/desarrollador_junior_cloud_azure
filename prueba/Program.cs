@@ -1,41 +1,53 @@
-﻿var firstNumber = 113;
-var secondNumber = 7;
-Console.WriteLine(firstNumber+secondNumber);
+﻿using myNameSpace;
 
-string firstName = "Bob";
-int widgetsSold = 7;
-Console.WriteLine($"{firstName} sold {widgetsSold + firstNumber} widgets.");
+Alumno sophia = new("Sophia", 93, 87, 98, 95, 100);
+Alumno nicolas = new("Nicolas", 80, 83, 82, 88, 85);
+Alumno zahirah = new("Zahirah", 84, 96, 73, 85, 79);
+Alumno jeong = new("Jeong", 90, 92, 98, 100, 97);
 
-int GetSum(int _fistNumber, int _secondNumber){
-    return _fistNumber + _secondNumber;
-}//End GetSum
+Console.WriteLine("Student\tGrade");
+Console.WriteLine(sophia.GetGradeString());
+Console.WriteLine(nicolas.GetGradeString());
+Console.WriteLine(zahirah.GetGradeString());
+Console.WriteLine(jeong.GetGradeString());
 
-int GetSubtraction(int _fistNumber, int _secondNumber){
-    return _fistNumber - _secondNumber;
-}//End GetSubtraction
+namespace myNameSpace{
+    class Alumno{
 
-int GetMultiplication(int _fistNumber, int _secondNumber){
-    return _fistNumber * _secondNumber;
-}//End GetSubtraction
+        string nombre;
+        int[] grades = new int[5];
 
-object GetDivision(int _firstNumber, int _secondNumber, bool _asDecimal){
-    object vReturn;
-    if (_asDecimal){
-        vReturn = _firstNumber * 1.0 / _secondNumber;
-    }else {
-        vReturn =  _firstNumber / _secondNumber;
-    }//End if
-    return vReturn;
-}//End GetDivsion
+        int GetGradesSum(){
+            return grades.Sum();
+        }//End GetGradesSum
 
-int GetMod(int _firstNumber, int _secondNumber){
-    return _firstNumber % _secondNumber;
-}//End GetMod
+        decimal GetGradesAvg(){
+            return ((decimal) GetGradesSum())/grades.Length;
+        }//End GetGradesAvg
 
+        string GetGradeLetter(){
+            return GetGradesAvg() switch{
+                >= 97 => "A+",
+                >= 93 and <= 96 => "A",
+                >= 90 and <= 92 => "A-",
+                >= 87 and <= 89 => "B+",
+                >= 83 and <= 86 => "B",
+                _ => "C"
+            };
+        }//End GetGradeLetter
 
-Console.WriteLine($"Suma: {GetSum(firstNumber,secondNumber)}");
-Console.WriteLine($"Resta: {GetSubtraction(firstNumber,secondNumber)}");
-Console.WriteLine($"Multiplicacion: {GetMultiplication(firstNumber,secondNumber)}");
-Console.WriteLine($"Division: {GetDivision(firstNumber,secondNumber, false)}");
-Console.WriteLine($"Division forzando decimal: {GetDivision(firstNumber,secondNumber, true)}");
-Console.WriteLine($"Resto: {GetMod(firstNumber,secondNumber)}");
+        public string GetGradeString(){
+            return $"{this.nombre}\t{this.GetGradesAvg()}\t{this.GetGradeLetter()}";
+        }//End GradeString
+
+        public Alumno(string _nombre, int _g0, int _g1, int _g2, int _g3, int _g4){
+            nombre = _nombre;
+            grades[0] = _g0;
+            grades[1] = _g1;
+            grades[2] = _g2;
+            grades[3] = _g3;
+            grades[4] = _g4;
+        }//End constructor
+
+    }//End Alumno
+}//End myNameSpace
