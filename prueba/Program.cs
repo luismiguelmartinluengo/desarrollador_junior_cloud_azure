@@ -1,15 +1,18 @@
+using System.ComponentModel.Design;
 using myNameSpace;
 
-Alumno sophia = new("Sophia", 90, 86, 87, 98, 100);
-Alumno andrew = new("Andrew", 92, 89, 81, 96, 90);
-Alumno emma = new("Emma", 90, 85, 87, 98, 68);
-Alumno logan = new("Logan", 90, 95, 87, 88, 96);
+
+Alumno[] alumnos = [new("Sophia", 90, 86, 87, 98, 100),
+                    new("Andrew", 92, 89, 81, 96, 90), 
+                    new("Emma", 90, 85, 87, 98, 68), 
+                    new("Logan", 90, 95, 87, 88, 96),
+                    new("Luismi", 99,94,99,100,100)];
 
 Console.WriteLine("Student\tGrade");
-Console.WriteLine(sophia.GetGradeString());
-Console.WriteLine(andrew.GetGradeString());
-Console.WriteLine(emma.GetGradeString());
-Console.WriteLine(logan.GetGradeString());
+foreach(Alumno alumno in alumnos){
+    Console.WriteLine(alumno.GetGradeString());
+}//End foreach
+
 
 namespace myNameSpace{
     class Alumno{
@@ -21,30 +24,31 @@ namespace myNameSpace{
             return grades.Sum();
         }//End GetGradesSum
 
-        decimal GetGradesAvg(){
-            return ((decimal) GetGradesSum())/grades.Length;
+        double GetGradesAvg(){
+            return ((double) GetGradesSum())/grades.Length;
         }//End GetGradesAvg
 
         string GetGradeLetter(){
             return GetGradeLetter(GetGradesAvg());
         }//End GetGradeLetter
 
-        public static string GetGradeLetter(decimal _avgGrade){
-            return _avgGrade switch{
+        public static string GetGradeLetter(double _avgGrade){
+            string letra = _avgGrade switch{
                 >= 97 => "A+",
-                >= 93 and <= 96 => "A",
-                >= 90 and <= 92 => "A-",
-                >= 87 and <= 89 => "B+",
-                >= 83 and <= 86 => "B",
-                >= 80 and <= 82 => "B-",
-                >= 77 and <= 79 => "C+",
-                >= 73 and <= 76 => "C",
-                >= 70 and <= 72 => "C-",
-                >= 67 and <= 69 => "D+",
-                >= 63 and <= 66 => "C",
-                >= 60 and <= 62 => "D-",
+                >= 93 and < 97 => "A",
+                >= 90 and < 93 => "A-",
+                >= 87 and < 90 => "B+",
+                >= 83 and < 87 => "B",
+                >= 80 and < 83 => "B-",
+                >= 77 and < 80 => "C+",
+                >= 73 and < 77 => "C",
+                >= 70 and < 73 => "C-",
+                >= 67 and < 70 => "D+",
+                >= 63 and < 67 => "C",
+                >= 60 and < 63 => "D-",
                 _ => "F"
             };
+            return letra;
         }//End GetGradeLetter
 
         public string GetGradeString(){
