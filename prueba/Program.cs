@@ -1,14 +1,21 @@
-Console.WriteLine(new Random().Next(2)==0?"head":"tails");
+string[] names = ["Alberto","Pepe","Juan"];
 
-string permission = "User";
-int level = 90;
+foreach(string name in names){
+    if(name == "Pepe"){
+        Console.WriteLine(name + " " + names[0]);
+        names[0] = "Albertito";
+        Console.WriteLine(name + " " + names[0]);
+    }//End if
+}//End for
 
-if(permission.Contains("Admin")){
-    Console.WriteLine(level>55?"Welcome, Super Admin user.":"Welcome, Admin user.");
-}else if (permission.Contains("Manager")){
-    Console.WriteLine(level > 20?"Contact an Admin for access.":"You do not have sufficient privileges.");
-}else{
-    Console.WriteLine("You do not have sufficient privileges.");
-}//End if
-
-Console.WriteLine(permission.Contains("Admin")?(level>55?"Welcome, Super Admin user.":"Welcome, Admin user."):permission.Contains("Manager")?(level > 20?"Contact an Admin for access.":"You do not have sufficient privileges."):"You do not have sufficient privileges.");
+string suffix;
+for(int i = 1; i <= 100; i++){
+    suffix = "";
+    if (i%3 == 0){
+        suffix += "Fizz";
+    }//End if
+    if (i%5 == 0){
+        suffix += "Buzz";
+    }//End if
+    Console.WriteLine($"{i}{((suffix.Length>0)?" - " + suffix:suffix)}");
+}//End for
