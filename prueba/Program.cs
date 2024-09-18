@@ -14,5 +14,6 @@ do {
         Console.WriteLine($"Hero was damaged and lost {damage} health and now has {herohealth} health.");
     }//End if
     isHeroTurn = !isHeroTurn;
+    Console.ReadKey();
 }while(herohealth>0 && monsterhealth>0);
 Console.WriteLine($"{((herohealth <= 0)?"Monster":"Hero")} wins!!!");
