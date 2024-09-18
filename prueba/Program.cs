@@ -1,21 +1,18 @@
-string[] names = ["Alberto","Pepe","Juan"];
+Random random = new();
+int herohealth = 20;
+int monsterhealth = 20;
+bool isHeroTurn = true;
+int damage;
 
-foreach(string name in names){
-    if(name == "Pepe"){
-        Console.WriteLine(name + " " + names[0]);
-        names[0] = "Albertito";
-        Console.WriteLine(name + " " + names[0]);
+do {
+    damage = random.Next(1,11);
+    if (isHeroTurn){
+        monsterhealth -= damage;
+        Console.WriteLine($"Monster was damaged and lost {damage} health and now has {monsterhealth} health.");
+    }else{
+        herohealth -= damage;
+        Console.WriteLine($"Hero was damaged and lost {damage} health and now has {herohealth} health.");
     }//End if
-}//End for
-
-string suffix;
-for(int i = 1; i <= 100; i++){
-    suffix = "";
-    if (i%3 == 0){
-        suffix += "Fizz";
-    }//End if
-    if (i%5 == 0){
-        suffix += "Buzz";
-    }//End if
-    Console.WriteLine($"{i}{((suffix.Length>0)?" - " + suffix:suffix)}");
-}//End for
+    isHeroTurn = !isHeroTurn;
+}while(herohealth>0 && monsterhealth>0);
+Console.WriteLine($"{((herohealth <= 0)?"Monster":"Hero")} wins!!!");
