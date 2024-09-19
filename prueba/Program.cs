@@ -1,14 +1,12 @@
-Random random = new();
-string[] names = ["Hero","Monster"];
-int[] healths = [20,20];
-int indexDamageTurn = 1;
-int damage;
+string[] values = { "12.3", "45", "ABC", "11", "DEF" };
+string message = "";
+float total = 0;
 
-do {
-    damage = random.Next(1,11);
-    healths[indexDamageTurn] -= damage;
-    Console.WriteLine($"{names[indexDamageTurn]} was damaged and lost {damage} health and now has {healths[indexDamageTurn]} health.");
-    indexDamageTurn = Math.Abs(indexDamageTurn-1);
-    Console.ReadKey();
-}while(healths[0]>0 && healths[1]>0);
-Console.WriteLine($"{names[indexDamageTurn]} wins!!!");
+foreach(string stringValue in values){
+    if (float.TryParse(stringValue, out float textConverted)){
+        total += textConverted;
+    }else{
+        message += stringValue;
+    }//End if
+}//End foreach
+Console.WriteLine($"Message: {message}\nTotal: {total}");
