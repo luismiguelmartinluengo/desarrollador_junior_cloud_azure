@@ -1,12 +1,18 @@
-string[] values = { "12.3", "45", "ABC", "11", "DEF" };
-string message = "";
-float total = 0;
+int?[] pallets = { 8, 15, 35, 3 };
+writeArray(pallets);
 
-foreach(string stringValue in values){
-    if (float.TryParse(stringValue, out float textConverted)){
-        total += textConverted;
-    }else{
-        message += stringValue;
-    }//End if
-}//End foreach
-Console.WriteLine($"Message: {message}\nTotal: {total}");
+Array.Sort(pallets);
+writeArray(pallets);
+
+Array.Clear(pallets, 1,2);
+writeArray(pallets);
+
+Array.Resize(ref pallets, 6);
+writeArray(pallets);
+
+void writeArray(Array _array){
+    Console.WriteLine($"Escritura de array con longitud {_array.Length}");
+    foreach (var item in _array){
+        Console.WriteLine($"-- {item}");
+    }//End foreach
+}//Enf writeArray
