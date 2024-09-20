@@ -1,25 +1,30 @@
-using System.Globalization;
+string customerName = "Ms. Barros";
 
-CultureInfo.CurrentCulture = new CultureInfo("en-US");
+string currentProduct = "Magic Yield";
+int currentShares = 2975000;
+decimal currentReturn = 0.1275m;
+decimal currentProfit = 55000000.0m;
 
+string newProduct = "Glorious Future";
+decimal newReturn = 0.13125m;
+decimal newProfit = 63000000.0m;
 
-decimal price = 123.45m;
-int discount = 50;
-Console.WriteLine($"Price: {price:C} (Save {discount:C})");
+// Your logic here
 
-decimal measurement = 123456.78912m;
-Console.WriteLine($"Measurement: {measurement:N4} units");
+Console.WriteLine($"Dear {customerName},");
+Console.WriteLine($"As a customer of our Magic Yield offering we are excited to tell you about a new financial product that would dramatically increase your return.\n");
+Console.WriteLine($"Currently, you own {currentShares:N} shares at a return of {currentReturn:P}.\n");
+Console.WriteLine($"Our new product, Glorious Future offers a return of {newReturn:P}.  Given your current volume, your potential profit would be {newProfit:C}.\n");
+Console.WriteLine("Here's a quick comparison:\n");
 
-decimal tax = .36785m;
-Console.WriteLine($"Tax rate: {tax:P}");
+string comparisonMessage = "";
 
-decimal price2 = 67.55m;
-decimal salePrice = 59.99m;
+comparisonMessage = string.Format("{0}{1}{2}\n{3}{4}{5}",currentProduct.PadRight(20),
+                                                        currentReturn.ToString("P").PadRight(8),
+                                                        currentProfit.ToString("C").PadLeft(15),
+                                                        newProduct.PadRight(20),
+                                                        newReturn.ToString("P").PadRight(8),
+                                                        newProfit.ToString("C").PadLeft(15));
 
-string yourDiscount = string.Format("You saved {0:C2} off the regular {1:C2} price. ", price2 - salePrice, price);
-Console.WriteLine(yourDiscount);
+Console.WriteLine(comparisonMessage);
 
-string input = "Pad this";
- Console.WriteLine(input.PadLeft(12, '-'));
- Console.WriteLine(input.PadLeft(12, '-'));
- Console.WriteLine(input.PadRight(12, '-'));
