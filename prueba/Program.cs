@@ -1,10 +1,9 @@
-const string input = "<div><h2>Widgets &trade;</h2><span>5000</span></div>";
+Console.WriteLine(DateTime.Now.ToLongTimeString());
+Console.WriteLine(DateTime.UtcNow.ToLongTimeString());
+Console.WriteLine(DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.ffff"));
 
-int quantityStart = input.IndexOf("<span>") + 6;
-int quantityEnd = input.IndexOf("</span>");
-string quantity = input.Substring(quantityStart,quantityEnd-quantityStart);
-string output = input.Replace("<div>","").Replace("</div>","").Replace("&trade","&reg");
-
-Console.WriteLine($"Quantity: {quantity}");
-Console.WriteLine($"Output: {output}");
-
+DateTime hoy = DateTime.UtcNow;
+Console.WriteLine(hoy.ToUniversalTime());
+Console.WriteLine(hoy.AddMonths(1));
+DateTime fecha = new DateTime(2023,1,30);
+Console.WriteLine(fecha.AddMonths(1).Ticks);
