@@ -1,45 +1,18 @@
-﻿/* 
-This code uses a names array and corresponding methods to display
-greeting messages
+﻿/*  
+This code instantiates a value and then calls the ChangeValue method
+to update the value. The code then prints the updated value to the console.
 */
-
-using System.Globalization;
-
-string[] names = new string[] { "Sophia", "Andrew", "AllGreetings" };
-
-string messageText = "";
-
-foreach (string name in names)
+internal class Program
 {
-    if (name == "Sophia")
-        messageText = SophiaMessage();
-    else if (name == "Andrew")
-        messageText = AndrewMessage();
-    else if (name == "AllGreetings")
-        messageText = SophiaMessage();
-        messageText = messageText + "\n\r" + AndrewMessage();
+    private static void Main(string[] args){
+        int x = 5;
 
-    Console.WriteLine(messageText + "\n\r");
+        ChangeValue(x ,out x);
+
+        Console.WriteLine(x);
+
+        void ChangeValue(int entrada, out int salida){
+            salida = entrada + 10;
+        }//End ChangeValue
+    }
 }
-
-bool pauseCode = true;
-//while (pauseCode == true);
-
-static string SophiaMessage()
-{
-    return "Hello, my name is Sophia.";
-}
-
-static string AndrewMessage()
-{
-    return "Hi, my name is Andrew. Good to meet you.";
-}
-
-int[] numbers = {1,2,3,4,5};
-int sum = 0;
-
-for (int i = 0; i<numbers.Length; i++){
-    sum += numbers[i];
-}//End for
-
-Console.WriteLine(sum);
