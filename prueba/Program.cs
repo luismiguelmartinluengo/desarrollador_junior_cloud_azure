@@ -1,141 +1,45 @@
-﻿using System;
+﻿/* 
+This code uses a names array and corresponding methods to display
+greeting messages
+*/
 
-Random random = new Random();
-Console.CursorVisible = false;
-int height = Console.WindowHeight - 1;
-int width = Console.WindowWidth - 5;
-bool shouldExit = false;
-bool accelerated = false;
+using System.Globalization;
 
-// Console position of the player
-int playerX = 0;
-int playerY = 0;
+string[] names = new string[] { "Sophia", "Andrew", "AllGreetings" };
 
-// Console position of the food
-int foodX = 0;
-int foodY = 0;
+string messageText = "";
 
-// Available player and food strings
-string[] states = {"('-')", "(^-^)", "(X_X)"};
-string[] foods = {"@@@@@", "$$$$$", "#####"};
+foreach (string name in names)
+{
+    if (name == "Sophia")
+        messageText = SophiaMessage();
+    else if (name == "Andrew")
+        messageText = AndrewMessage();
+    else if (name == "AllGreetings")
+        messageText = SophiaMessage();
+        messageText = messageText + "\n\r" + AndrewMessage();
 
-// Current player string displayed in the Console
-string player = states[0];
+    Console.WriteLine(messageText + "\n\r");
+}
 
-// Index of the current food
-int food = 0;
+bool pauseCode = true;
+//while (pauseCode == true);
 
-InitializeGame();
-while (!shouldExit) {
-    Move();
-    if (accelerated){
-        Console.WriteLine("acc");
-        Move();
-    }//End if
-    shouldExit = TerminalResized();
-}//End while
+static string SophiaMessage()
+{
+    return "Hello, my name is Sophia.";
+}
 
-// Returns true if the Terminal was resized 
-bool TerminalResized() {
-    return height != Console.WindowHeight - 1 || width != Console.WindowWidth - 5;
-}//End TerminalResized
+static string AndrewMessage()
+{
+    return "Hi, my name is Andrew. Good to meet you.";
+}
 
-// Displays random food at a random location
-void ShowFood() {
-    // Update food to a random index
-    food = random.Next(0, foods.Length);
+int[] numbers = {1,2,3,4,5};
+int sum = 0;
 
-    // Update food position to a random location
-    foodX = random.Next(0, width - player.Length);
-    foodY = random.Next(0, height - 1);
+for (int i = 0; i<numbers.Length; i++){
+    sum += numbers[i];
+}//End for
 
-    // Display the food at the location
-    Console.SetCursorPosition(foodX, foodY);
-    Console.Write(foods[food]);
-}//End ShowFood
-
-// Changes the player to match the food consumed
-void ChangePlayer() {
-    player = states[food];
-    Console.SetCursorPosition(playerX, playerY);
-    Console.Write(player);
-}//Change Player
-
-// Temporarily stops the player from moving
-void FreezePlayer() {
-    System.Threading.Thread.Sleep(5000);
-    player = states[0];
-}//End FreezePlayer
-
-// Reads directional input from the Console and moves the player
-void Move() {
-    int lastX = playerX;
-    int lastY = playerY;
-    
-    switch (Console.ReadKey(true).Key) {
-        case ConsoleKey.UpArrow:
-            playerY--; 
-            break;
-		case ConsoleKey.DownArrow: 
-            playerY++; 
-            break;
-		case ConsoleKey.LeftArrow:  
-            playerX--; 
-            break;
-		case ConsoleKey.RightArrow: 
-            playerX++; 
-            break;
-		case ConsoleKey.Escape:     
-            shouldExit = true; 
-            break;
-        default:
-            shouldExit = true;
-            break;
-    }//End switch
-
-    // Clear the characters at the previous position
-    Console.SetCursorPosition(lastX, lastY);
-    for (int i = 0; i < player.Length; i++) {
-        Console.Write(" ");
-    }//End for
-
-    // Keep player position within the bounds of the Terminal window
-    playerX = (playerX < 0) ? 0 : (playerX >= width ? width : playerX);
-    playerY = (playerY < 0) ? 0 : (playerY >= height ? height : playerY);
-
-    // Draw the player at the new location
-    Console.SetCursorPosition(playerX, playerY);
-    Console.Write(player);
-
-    if (playerX == foodX && playerY == foodY){
-        ChangePlayer();
-        switch (food){
-            case 0:
-                accelerated = false;
-                break;
-            case 1:
-                accelerated = true;
-                break;
-            case 2:
-                accelerated = false;
-                FreezePlayer();
-                Console.Write(player);
-                break;
-        }//End switch
-        ShowFood();
-    }//End if
-
-
-    
-
-    
-
-}//End Move
-
-// Clears the console, displays the food and player
-void InitializeGame() {
-    Console.Clear();
-    ShowFood();
-    Console.SetCursorPosition(0, 0);
-    Console.Write(player);
-}//End InitializeGame
+Console.WriteLine(sum);
