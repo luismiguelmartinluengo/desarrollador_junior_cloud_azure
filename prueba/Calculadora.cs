@@ -2,14 +2,21 @@ namespace prueba;
 
 public class Calculadora(){
 
-    public int Suma(int _a, int _b){
+    public int sum(int _a, int _b){
         return _a + _b;
-    }//End Suma
+    }//End Sum
 
-    int Resta(int _a, int _b){
-        return _a - _b;
+    public int subtraction(int _a, int _b){
+        return sum(_a, -_b);
     }//End Resta
 
+    public int multiplication(int _a, int _b){
+        return _a * _b;
+    }//End multiplication
+
+    public int division(int _a, int _b){
+        return _a / _b;
+    }//End division
 
 
 }//End Calculadora
