@@ -1,6 +1,7 @@
 namespace prueba;
 
 public class Calculadora(){
+    //Calculadora basica
 
     public int? sum(int? _a, int? _b){
         return _a + _b;
