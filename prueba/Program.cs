@@ -8,5 +8,11 @@ class Program
 {
     private static void Main(string[] args){
 
+        Katas katas = new();
+
+        for (int i = 1; i < 16; i++){
+            Console.WriteLine(katas.JuegoMultiplos(i+100));
+        }//End for
+
     }//End Main
 }//End Promgram
